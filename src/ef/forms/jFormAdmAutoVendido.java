@@ -93,12 +93,7 @@ public class jFormAdmAutoVendido extends javax.swing.JFrame {
                     txtClienteAutoVen.setText(String.valueOf((jTable3.getValueAt(jTable3.getSelectedRow(), 5))));
 
                     funcEstado_txts(false);
-                    System.out.println(" " + txtNroPlaca.getText());
-                    System.out.println("" + txtMarcaAutoVen.getText());
-                    System.out.println("" + txtModeloAutoVen.getText());
-                    System.out.println("" + txtColorAutoVen.getText());
-                    System.out.println("" + txtPrecioAutoVen.getText());
-                    System.out.println("" + txtClienteAutoVen.getText());
+                    
                     btnEditar.setEnabled(true);
                     btnRegistrar.setEnabled(false);
                     txtAreaLogs.setText("Bienvenido: \nEditar o eliminar el registro seleccionado...");
@@ -425,12 +420,6 @@ public class jFormAdmAutoVendido extends javax.swing.JFrame {
             IMantenimientoAutosVendidosSQLOra autoVenAdm = new MantenimientoAutosVendidosAdm();
 
             autoVenAdm.addAutosVendidos(addAutosVendidos1);
-            System.out.println(" " + nroPlacaAutoVen);
-            System.out.println("" + marcaAutoVen);
-            System.out.println("" + modeloAutoVen);
-            System.out.println("" + colorAutoVen);
-            System.out.println("" + precioAutoVen);
-            System.out.println("" + clienteAutoVen);
 
             System.out.println("Se agrega nuevo registro");
             ArrayList<AutosVendidos> listaAutosVendidos = autoVenAdm.listarAutosVendidos();
@@ -512,13 +501,7 @@ public class jFormAdmAutoVendido extends javax.swing.JFrame {
             }
 
             ListSelectionModel model = jTable3.getSelectionModel();
-            System.out.println(" " + nroPlacaAutoVen);
-            System.out.println("" + marcaAutoVen);
-            System.out.println("" + modeloAutoVen);
-            System.out.println("" + colorAutoVen);
-            System.out.println("" + precioAutoVen);
-            System.out.println("" + clienteAutoVen);
-
+            
             JOptionPane.showMessageDialog(null, "El registro se ha actualizado con exito");
             btnRegistrar.setEnabled(true);
             funcEstado_txts(true);

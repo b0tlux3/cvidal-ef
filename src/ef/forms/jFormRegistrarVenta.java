@@ -1,4 +1,3 @@
-
 package ef.forms;
 
 import ef.adm.modelo.IMantenimientoAutosVendidosSQLOra;
@@ -11,8 +10,6 @@ import ef.modelo.AutosVendidos;
 import ef.modelo.Clientes;
 import ef.modelo.Revisiones;
 import java.util.ArrayList;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
@@ -25,23 +22,10 @@ public class jFormRegistrarVenta extends javax.swing.JFrame {
     DefaultTableModel modelo2 = new DefaultTableModel(null, new String[]{
         "Placa", "Marca", "Modelo", "Color", "Precio"});
 
-    String codCliente;
-    String nomCliente;
-    String apellCliente;
-    String dniCliente;
-    String dirCliente;
-    String distCliente;
-    String telfCliente;
-    String nroPlacaAutoVen;
-    String marcaAutoVen;
-    String modeloAutoVen;
-    String colorAutoVen;
-    String precioAutoVen;
-    String aceiteRevision;
-    String filtroRevision;
-    String frenosRevision;
-    String otrosRevision;
-    String nroRevisionInsert;
+    String codCliente, nomCliente, apellCliente, dniCliente, dirCliente,
+            distCliente, telfCliente, nroPlacaAutoVen, marcaAutoVen,
+            modeloAutoVen, colorAutoVen, precioAutoVen, aceiteRevision,
+            filtroRevision, frenosRevision, otrosRevision, nroRevisionInsert, codigoVentaInsert;
 
     public jFormRegistrarVenta() {
         initComponents();
@@ -64,11 +48,16 @@ public class jFormRegistrarVenta extends javax.swing.JFrame {
         IMantenimientoRevisionesSQLOra revAdm = new MantenimientoRevisionesAdm();
         ArrayList<Revisiones> listaRevisiones = revAdm.listarRevisiones();
         int countNroRevision = listaRevisiones.size();
+        int countCodigoVentaAuto = listaAutosVendidos.size();
+        
+        int codigoVentaAuto = Integer.valueOf(listaAutosVendidos.get(1).getCodigo_venta());
+        int countCodigoVentaInsert = codigoVentaAuto + 1;
+        codigoVentaInsert = String.valueOf(countCodigoVentaInsert);
 
         int nroRevision = Integer.valueOf(listaRevisiones.get(countNroRevision - 1).getNro_revision());
         int countNroRevisionInsert = nroRevision + 1;
         nroRevisionInsert = String.valueOf(countNroRevisionInsert);
-        System.out.println("Nro de revision: " + nroRevision);
+        System.out.println("Nro de revision: " + countCodigoVentaInsert);
 
         ListSelectionModel model = jTable3.getSelectionModel();
         model.addListSelectionListener(new ListSelectionListener() {
@@ -461,24 +450,6 @@ public class jFormRegistrarVenta extends javax.swing.JFrame {
         frenosRevision = txtFrenosRevision.getText();
         otrosRevision = txtOtrosRevision.getText();
 
-        System.out.println("" + codCliente);
-        System.out.println("" + nomCliente);
-        System.out.println("" + apellCliente);
-        System.out.println("" + dniCliente);
-        System.out.println("" + dirCliente);
-        System.out.println("" + distCliente);
-        System.out.println("" + telfCliente);
-        System.out.println("" + nroPlacaAutoVen);
-        System.out.println("" + marcaAutoVen);
-        System.out.println("" + modeloAutoVen);
-        System.out.println("" + colorAutoVen);
-        System.out.println("" + precioAutoVen);
-        System.out.println("" + aceiteRevision);
-        System.out.println("" + filtroRevision);
-        System.out.println("" + frenosRevision);
-        System.out.println("" + otrosRevision);
-        System.out.println("" + nroRevisionInsert);
-
         // Insert de Cliente
         Clientes addClientes1 = new Clientes();
         addClientes1.setCod_cliente(codCliente);
@@ -494,6 +465,7 @@ public class jFormRegistrarVenta extends javax.swing.JFrame {
 
         // Insert de Auto vendido
         AutosVendidos addAutosVendidos1 = new AutosVendidos();
+        addAutosVendidos1.setCodigo_venta(codigoVentaInsert);
         addAutosVendidos1.setNro_placa(nroPlacaAutoVen);
         addAutosVendidos1.setMarca(marcaAutoVen);
         addAutosVendidos1.setModelo(modeloAutoVen);
@@ -504,22 +476,21 @@ public class jFormRegistrarVenta extends javax.swing.JFrame {
         IMantenimientoAutosVendidosSQLOra autoVenAdm = new MantenimientoAutosVendidosAdm();
 
         autoVenAdm.addAutosVendidos(addAutosVendidos1);
-        
+
         // Insert de revision
-        
         Revisiones addRevisiones1 = new Revisiones();
-            addRevisiones1.setNro_revision(nroRevisionInsert);
-            addRevisiones1.setCambio_aceite(aceiteRevision);
-            addRevisiones1.setCambio_filtro(filtroRevision);
-            addRevisiones1.setRevision_frenos(frenosRevision);
-            addRevisiones1.setOtros(otrosRevision);
-            addRevisiones1.setNro_placa(nroPlacaAutoVen);
+        addRevisiones1.setNro_revision(nroRevisionInsert);
+        addRevisiones1.setCambio_aceite(aceiteRevision);
+        addRevisiones1.setCambio_filtro(filtroRevision);
+        addRevisiones1.setRevision_frenos(frenosRevision);
+        addRevisiones1.setOtros(otrosRevision);
+        addRevisiones1.setNro_placa(codigoVentaInsert);
 
-            IMantenimientoRevisionesSQLOra revAdm = new MantenimientoRevisionesAdm();
+        IMantenimientoRevisionesSQLOra revAdm = new MantenimientoRevisionesAdm();
 
-            revAdm.addRevisiones(addRevisiones1);
+        revAdm.addRevisiones(addRevisiones1);
 
-             JOptionPane.showMessageDialog(null, "Venta registrado con exito!");
+        JOptionPane.showMessageDialog(null, "Venta registrado con exito!");
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -532,7 +503,7 @@ public class jFormRegistrarVenta extends javax.swing.JFrame {
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         JDialog.setDefaultLookAndFeelDecorated(true);
         int response = JOptionPane.showConfirmDialog(null, "Realmente salir?", "Confirmar",
-            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.NO_OPTION) {
             System.out.println("Regreso");
         } else if (response == JOptionPane.YES_OPTION) {

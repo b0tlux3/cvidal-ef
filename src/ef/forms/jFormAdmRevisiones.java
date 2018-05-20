@@ -64,8 +64,7 @@ public class jFormAdmRevisiones extends javax.swing.JFrame {
                 listaRevisiones.get(i).getCambio_filtro(),
                 listaRevisiones.get(i).getRevision_frenos(),
                 listaRevisiones.get(i).getOtros(),
-                listaRevisiones.get(i).getNro_placa(),
-            });
+                listaRevisiones.get(i).getNro_placa(),});
 
         }
 
@@ -79,13 +78,12 @@ public class jFormAdmRevisiones extends javax.swing.JFrame {
 
                 if (!model.isSelectionEmpty()) {
                     int selectRow = model.getMinSelectionIndex();
-                    //JOptionPane.showMessageDialog(null, "Select Fila: " + selectRow);
                     int selectedRow = jTable3.getSelectedRow();
                     String setToTextField = new String();
                     for (int i = 0; i < jTable3.getColumnCount(); i++) {
 
                     }
-                    // Finally set this to your JTextField.
+                    // Seteando los txts
                     txtNroRevision.setText(String.valueOf((jTable3.getValueAt(jTable3.getSelectedRow(), 0))));
                     txtAceiteRevision.setText(String.valueOf((jTable3.getValueAt(jTable3.getSelectedRow(), 1))));
                     txtFiltroRevision.setText(String.valueOf((jTable3.getValueAt(jTable3.getSelectedRow(), 2))));
@@ -431,12 +429,6 @@ public class jFormAdmRevisiones extends javax.swing.JFrame {
             IMantenimientoRevisionesSQLOra revAdm = new MantenimientoRevisionesAdm();
 
             revAdm.addRevisiones(addRevisiones1);
-            System.out.println(" " + nroRevision);
-            System.out.println("" + aceiteRevision);
-            System.out.println("" + filtroRevision);
-            System.out.println("" + frenosRevision);
-            System.out.println("" + otrosRevision);
-            System.out.println("" + marcaRevision);
 
             System.out.println("Se agrega nuevo registro");
             ArrayList<Revisiones> listaRevisiones = revAdm.listarRevisiones();
@@ -449,15 +441,14 @@ public class jFormAdmRevisiones extends javax.swing.JFrame {
                     listaRevisiones.get(i).getCambio_filtro(),
                     listaRevisiones.get(i).getRevision_frenos(),
                     listaRevisiones.get(i).getOtros(),
-                    listaRevisiones.get(i).getNro_placa(),
-                });
+                    listaRevisiones.get(i).getNro_placa(),});
 
             }
 
             ListSelectionModel model = jTable3.getSelectionModel();
             funcEstado_txts(true);
-           txtAreaLogs.setText("Bienvenido: \nAgregue nuevas Revisiones o seleccione uno de la tabla...\n"
-                + "En el campo Marca agregar el nro de Placa que corresponde al auto (Ej: pe0876)");
+            txtAreaLogs.setText("Bienvenido: \nAgregue nuevas Revisiones o seleccione uno de la tabla...\n"
+                    + "En el campo Marca agregar el nro de Placa que corresponde al auto (Ej: pe0876)");
             JOptionPane.showMessageDialog(null, "Clientes registrado con exito!");
 
         } else {
@@ -515,25 +506,17 @@ public class jFormAdmRevisiones extends javax.swing.JFrame {
                     listaRevisiones.get(i).getCambio_filtro(),
                     listaRevisiones.get(i).getRevision_frenos(),
                     listaRevisiones.get(i).getOtros(),
-                    listaRevisiones.get(i).getNro_placa(),
-
-                });
+                    listaRevisiones.get(i).getNro_placa(),});
 
             }
 
             ListSelectionModel model = jTable3.getSelectionModel();
-            System.out.println(" " + nroRevision);
-            System.out.println("" + aceiteRevision);
-            System.out.println("" + filtroRevision);
-            System.out.println("" + frenosRevision);
-            System.out.println("" + otrosRevision);
-            System.out.println("" + marcaRevision);
 
             JOptionPane.showMessageDialog(null, "El registro se ha actualizado con exito");
             btnRegistrar.setEnabled(true);
             funcEstado_txts(true);
             txtAreaLogs.setText("Bienvenido: \nAgregue nuevas Revisiones o seleccione uno de la tabla...\n"
-                + "En el campo Marca agregar el nro de Placa que corresponde al auto (Ej: pe0876)");
+                    + "En el campo Marca agregar el nro de Placa que corresponde al auto (Ej: pe0876)");
 
         }
     }//GEN-LAST:event_btnEditarActionPerformed
@@ -554,7 +537,7 @@ public class jFormAdmRevisiones extends javax.swing.JFrame {
                 Revisiones addRevisiones1 = new Revisiones();
                 addRevisiones1.setNro_revision(nroRevision);
 
-               IMantenimientoRevisionesSQLOra revAdm = new MantenimientoRevisionesAdm();
+                IMantenimientoRevisionesSQLOra revAdm = new MantenimientoRevisionesAdm();
                 revAdm.deleteRevisiones(addRevisiones1);
 
                 ArrayList<Revisiones> listaRevisiones = revAdm.listarRevisiones();
@@ -563,13 +546,12 @@ public class jFormAdmRevisiones extends javax.swing.JFrame {
 
                 for (int i = 0; i < listaRevisiones.size(); i++) {
                     modelo2.addRow(new Object[]{
-                         listaRevisiones.get(i).getNro_revision(),
-                    listaRevisiones.get(i).getCambio_aceite(),
-                    listaRevisiones.get(i).getCambio_filtro(),
-                    listaRevisiones.get(i).getRevision_frenos(),
-                    listaRevisiones.get(i).getOtros(),
-                    listaRevisiones.get(i).getNro_placa(),
-                    });
+                        listaRevisiones.get(i).getNro_revision(),
+                        listaRevisiones.get(i).getCambio_aceite(),
+                        listaRevisiones.get(i).getCambio_filtro(),
+                        listaRevisiones.get(i).getRevision_frenos(),
+                        listaRevisiones.get(i).getOtros(),
+                        listaRevisiones.get(i).getNro_placa(),});
 
                 }
 
@@ -577,8 +559,8 @@ public class jFormAdmRevisiones extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "El registro se ha eliminado con exito");
                 funcEstado_txts(true);
                 btnRegistrar.setEnabled(true);
-               txtAreaLogs.setText("Bienvenido: \nAgregue nuevas Revisiones o seleccione uno de la tabla...\n"
-                + "En el campo Marca agregar el nro de Placa que corresponde al auto (Ej: pe0876)");
+                txtAreaLogs.setText("Bienvenido: \nAgregue nuevas Revisiones o seleccione uno de la tabla...\n"
+                        + "En el campo Marca agregar el nro de Placa que corresponde al auto (Ej: pe0876)");
 
             } else if (response == JOptionPane.CLOSED_OPTION) {
                 System.out.println("Ha cerrado boton");
@@ -617,8 +599,8 @@ public class jFormAdmRevisiones extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         jFormMenuPrincipal menuPrin1 = new jFormMenuPrincipal();
-          dispose();
-          menuPrin1.setVisible(true);
+        dispose();
+        menuPrin1.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

@@ -19,7 +19,7 @@ public class MantenimientoAutosVendidosAdm implements IMantenimientoAutosVendido
 
         try {
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("select a.nro_placa, a.marca, a.modelo, a.color, a.precio, c.nombre from tb_autos_vendidos a, tb_clientes c where a.cod_cliente=c.cod_cliente and a.activo='1' order by nro_placa");
+            ResultSet rs = st.executeQuery("select a.nro_placa, a.marca, a.modelo, a.color, a.precio, c.nombre, a.codigo_venta from tb_autos_vendidos a, tb_clientes c where a.cod_cliente=c.cod_cliente and a.activo='1' order by nro_placa");
             while (rs.next()) {
                 AutosVendidos av = new AutosVendidos();
                 av.setNro_placa(rs.getString(1));
@@ -28,6 +28,7 @@ public class MantenimientoAutosVendidosAdm implements IMantenimientoAutosVendido
                 av.setColor(rs.getString(4));
                 av.setPrecio(rs.getString(5));
                 av.setCod_cliente(rs.getString(6));
+                av.setCodigo_venta(rs.getString(7));
                 listaAutosVendidos.add(av);
             }
 
@@ -48,21 +49,23 @@ public class MantenimientoAutosVendidosAdm implements IMantenimientoAutosVendido
         Connection conn = conecta.getConnection();
 
         try {
+            String codigoVenta = autoven.getCodigo_venta();
             String nroPlacaAutoVen = autoven.getNro_placa();
             String marcaAutoVen = autoven.getMarca();
             String modeloAutoVen = autoven.getModelo();
             String colorAutoVen = autoven.getColor();
             String precioAutoVen = autoven.getPrecio();
             String clienteAutoVen = autoven.getCod_cliente();
-            PreparedStatement pst = conn.prepareStatement("INSERT INTO tb_autos_vendidos (nro_placa, marca, modelo, color, precio, nombre, activo) values (?,?,?,?,?,?,?)");
+            PreparedStatement pst = conn.prepareStatement("INSERT INTO tb_autos_vendidos (codigo_venta, nro_placa, marca, modelo, color, precio, cod_cliente, activo) values (?,?,?,?,?,?,?,?)");
 
-            pst.setString(1, nroPlacaAutoVen);
-            pst.setString(2, marcaAutoVen);
-            pst.setString(3, modeloAutoVen);
-            pst.setString(4, colorAutoVen);
-            pst.setString(5, precioAutoVen);
-            pst.setString(6, clienteAutoVen);
-            pst.setString(7, "1");
+            pst.setString(1, codigoVenta);
+            pst.setString(2, nroPlacaAutoVen);
+            pst.setString(3, marcaAutoVen);
+            pst.setString(4, modeloAutoVen);
+            pst.setString(5, colorAutoVen);
+            pst.setString(6, precioAutoVen);
+            pst.setString(7, clienteAutoVen);
+            pst.setString(8, "1");
             ResultSet rs = pst.executeQuery();
 
             rs.close();

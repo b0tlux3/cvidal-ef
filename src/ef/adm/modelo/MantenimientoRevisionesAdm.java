@@ -19,7 +19,7 @@ public class MantenimientoRevisionesAdm implements IMantenimientoRevisionesSQLOr
 
         try {
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("select r.nro_revision as Numero, r.cambio_aceite as Aceite, r.cambio_filtro as Filtro, r.revision_frenos as Frenos, r.otros, a.marca as Auto from tb_revisiones r, tb_autos_vendidos a where r.nro_placa=a.nro_placa and r.activo='1' order by nro_revision");
+            ResultSet rs = st.executeQuery("select r.nro_revision as Numero, r.cambio_aceite as Aceite, r.cambio_filtro as Filtro, r.revision_frenos as Frenos, r.otros, a.marca as Auto from tb_revisiones r, tb_autos_vendidos a where r.codigo_venta=a.codigo_venta and r.activo='1' order by nro_revision");
             while (rs.next()) {
                 Revisiones revi = new Revisiones();
                 revi.setNro_revision(rs.getString(1));
@@ -54,7 +54,7 @@ public class MantenimientoRevisionesAdm implements IMantenimientoRevisionesSQLOr
             String frenosRevision = rev.getRevision_frenos();
             String otrosRevision = rev.getOtros();
             String marcaRevision = rev.getNro_placa();
-            PreparedStatement pst = conn.prepareStatement("INSERT INTO tb_revisiones (nro_revision, cambio_aceite, cambio_filtro, revision_frenos, otros, nro_placa, activo) values (?,?,?,?,?,?,?)");
+            PreparedStatement pst = conn.prepareStatement("INSERT INTO tb_revisiones (nro_revision, cambio_aceite, cambio_filtro, revision_frenos, otros, codigo_venta, activo) values (?,?,?,?,?,?,?)");
 
             pst.setString(1, nroRevision);
             pst.setString(2, aceiteRevision);
@@ -88,7 +88,7 @@ public class MantenimientoRevisionesAdm implements IMantenimientoRevisionesSQLOr
             String frenosRevision = rev.getRevision_frenos();
             String otrosRevision = rev.getOtros();
             String marcaRevision = rev.getNro_placa();
-            PreparedStatement pst = conn.prepareStatement("update tb_revisiones set cambio_aceite=?, cambio_filtro=?, revision_frenos=?, otros=?, nro_placa=? where nro_revision=?");
+            PreparedStatement pst = conn.prepareStatement("update tb_revisiones set cambio_aceite=?, cambio_filtro=?, revision_frenos=?, otros=?, codigo_venta=? where nro_revision=?");
 
             pst.setString(1, aceiteRevision);
             pst.setString(2, filtroRevision);

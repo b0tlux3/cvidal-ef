@@ -1,4 +1,3 @@
-
 package ef.adm.modelo;
 
 import ef.dao.Conexion;
@@ -9,11 +8,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class MantenimientoClientesAdm implements IMantenimientoClientesSQLOra{
+public class MantenimientoClientesAdm implements IMantenimientoClientesSQLOra {
 
     @Override
     public ArrayList<Clientes> listarClientes() {
-         ArrayList listaClientes = new ArrayList();
+        ArrayList listaClientes = new ArrayList();
         Conexion conecta = new Conexion();
         Connection conn = conecta.getConnection();
 
@@ -74,7 +73,7 @@ public class MantenimientoClientesAdm implements IMantenimientoClientesSQLOra{
         } catch (Exception e) {
             System.out.println("Se tiene el siguiente error: " + e.getMessage());
         }
-        
+
     }
 
     @Override
@@ -105,12 +104,12 @@ public class MantenimientoClientesAdm implements IMantenimientoClientesSQLOra{
         } catch (Exception e) {
             System.out.println("Se tiene el siguiente error: " + e.getMessage());
         }
-        
+
     }
 
     @Override
     public void deleteClientes(Clientes client) {
-        
+
         Conexion conecta = new Conexion();
         Connection conn = conecta.getConnection();
 
@@ -127,7 +126,7 @@ public class MantenimientoClientesAdm implements IMantenimientoClientesSQLOra{
         } catch (Exception e) {
             System.out.println("Se tiene el siguiente error: " + e.getMessage());
         }
-        
+
     }
-    
+
 }

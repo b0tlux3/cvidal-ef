@@ -12,11 +12,12 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 public class jFormAdmClientes extends javax.swing.JFrame {
-DefaultTableModel modelo2 = new DefaultTableModel(null, new String[]{
+
+    DefaultTableModel modelo2 = new DefaultTableModel(null, new String[]{
         "Codigo", "Nombre", "Apellidos", "DNI", "Direccion", "Distrito", "Telefono"});
     boolean estado_txtFields = true;
 
-     boolean funcEstado_txts(boolean estadoTxts) {
+    boolean funcEstado_txts(boolean estadoTxts) {
         boolean estado_txts = estadoTxts;
         if (estado_txts == true) {
             txtCodCliente.setEnabled(true);
@@ -51,27 +52,26 @@ DefaultTableModel modelo2 = new DefaultTableModel(null, new String[]{
 
         return estado_txts;
     }
-    
+
     public jFormAdmClientes() {
         initComponents();
-        
-          IMantenimientoClientesSQLOra clienteAdm = new MantenimientoClientesAdm();
-          ArrayList<Clientes> listaClientes = clienteAdm.listarClientes();
-          
-          jTable3.putClientProperty("Terminate edit", Boolean.TRUE);
+
+        IMantenimientoClientesSQLOra clienteAdm = new MantenimientoClientesAdm();
+        ArrayList<Clientes> listaClientes = clienteAdm.listarClientes();
+
+        jTable3.putClientProperty("Terminate edit", Boolean.TRUE);
         for (int i = 0; i < listaClientes.size(); i++) {
             modelo2.addRow(new Object[]{
                 listaClientes.get(i).getCod_cliente(),
-                    listaClientes.get(i).getNombre(),
-                    listaClientes.get(i).getApellido(),
-                    listaClientes.get(i).getDni(),
-                    listaClientes.get(i).getDireccion(),
-                    listaClientes.get(i).getDistrito(),
-                    listaClientes.get(i).getTelefono(),
-            });
+                listaClientes.get(i).getNombre(),
+                listaClientes.get(i).getApellido(),
+                listaClientes.get(i).getDni(),
+                listaClientes.get(i).getDireccion(),
+                listaClientes.get(i).getDistrito(),
+                listaClientes.get(i).getTelefono(),});
 
         }
-        
+
         btnEditar.setEnabled(false);
         txtAreaLogs.setText("Bienvenido: \nAgregue nuevos Clientes o seleccione uno de la tabla...");
         ListSelectionModel model = jTable3.getSelectionModel();
@@ -97,13 +97,7 @@ DefaultTableModel modelo2 = new DefaultTableModel(null, new String[]{
                     txtTelCliente.setText(String.valueOf((jTable3.getValueAt(jTable3.getSelectedRow(), 6))));
 
                     funcEstado_txts(false);
-                    System.out.println(" " + txtCodCliente.getText());
-                    System.out.println("" + txtNomCliente.getText());
-                    System.out.println("" + txtApellCliente.getText());
-                    System.out.println("" + txtDniCliente.getText());
-                    System.out.println("" + txtDirCliente.getText());
-                    System.out.println("" + txtDistCliente.getText());
-                    System.out.println("" + txtTelCliente.getText());
+
                     btnEditar.setEnabled(true);
                     btnRegistrar.setEnabled(false);
                     txtAreaLogs.setText("Bienvenido: \nEditar o eliminar el registro seleccionado...");
@@ -426,7 +420,7 @@ DefaultTableModel modelo2 = new DefaultTableModel(null, new String[]{
         // TODO add your handling code here:
         JDialog.setDefaultLookAndFeelDecorated(true);
         int response = JOptionPane.showConfirmDialog(null, "Realmente salir?", "Confirmar",
-            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.NO_OPTION) {
             System.out.println("Regreso");
         } else if (response == JOptionPane.YES_OPTION) {
@@ -439,9 +433,9 @@ DefaultTableModel modelo2 = new DefaultTableModel(null, new String[]{
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-      jFormMenuPrincipal menuPrin1 = new jFormMenuPrincipal();
-          dispose();
-          menuPrin1.setVisible(true);
+        jFormMenuPrincipal menuPrin1 = new jFormMenuPrincipal();
+        dispose();
+        menuPrin1.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
@@ -467,13 +461,6 @@ DefaultTableModel modelo2 = new DefaultTableModel(null, new String[]{
 
             IMantenimientoClientesSQLOra clienteAdm = new MantenimientoClientesAdm();
             clienteAdm.addClientes(addClientes1);
-            System.out.println(" " + codCliente);
-            System.out.println("" + nomCliente);
-            System.out.println("" + apellCliente);
-            System.out.println("" + dniCliente);
-            System.out.println("" + dirCliente);
-            System.out.println("" + distCliente);
-            System.out.println("" + telfCliente);
 
             System.out.println("Se agrega nuevo registro");
             ArrayList<Clientes> listaClientes = clienteAdm.listarClientes();
@@ -487,9 +474,7 @@ DefaultTableModel modelo2 = new DefaultTableModel(null, new String[]{
                     listaClientes.get(i).getDni(),
                     listaClientes.get(i).getDireccion(),
                     listaClientes.get(i).getDistrito(),
-                    listaClientes.get(i).getTelefono(),
-
-                });
+                    listaClientes.get(i).getTelefono(),});
 
             }
 
@@ -533,7 +518,7 @@ DefaultTableModel modelo2 = new DefaultTableModel(null, new String[]{
             String telfCliente = txtTelCliente.getText();
 
             Clientes addClientes1 = new Clientes();
-           addClientes1.setCod_cliente(codCliente);
+            addClientes1.setCod_cliente(codCliente);
             addClientes1.setNombre(nomCliente);
             addClientes1.setApellido(apellCliente);
             addClientes1.setDni(dniCliente);
@@ -556,20 +541,11 @@ DefaultTableModel modelo2 = new DefaultTableModel(null, new String[]{
                     listaClientes.get(i).getDni(),
                     listaClientes.get(i).getDireccion(),
                     listaClientes.get(i).getDistrito(),
-                    listaClientes.get(i).getTelefono(),
-
-                });
+                    listaClientes.get(i).getTelefono(),});
 
             }
 
             ListSelectionModel model = jTable3.getSelectionModel();
-            System.out.println(" " + codCliente);
-            System.out.println("" + nomCliente);
-            System.out.println("" + apellCliente);
-            System.out.println("" + dniCliente);
-            System.out.println("" + dirCliente);
-            System.out.println("" + distCliente);
-            System.out.println("" + telfCliente);
 
             JOptionPane.showMessageDialog(null, "El registro se ha actualizado con exito");
             btnRegistrar.setEnabled(true);
@@ -585,7 +561,7 @@ DefaultTableModel modelo2 = new DefaultTableModel(null, new String[]{
         if (estado_txtFields == false) {
 
             int response = JOptionPane.showConfirmDialog(null, "Realmente desea eliminar el registro: " + txtCodCliente.getText(), "Eliminar Registro",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (response == JOptionPane.NO_OPTION) {
                 System.out.println("Regreso");
                 txtAreaLogs.setText("Bienvenido: \nSe va a eliminar el registro...");
@@ -595,7 +571,7 @@ DefaultTableModel modelo2 = new DefaultTableModel(null, new String[]{
                 Clientes addClientes1 = new Clientes();
                 addClientes1.setCod_cliente(codCliente);
 
-               IMantenimientoClientesSQLOra clienteAdm = new MantenimientoClientesAdm();
+                IMantenimientoClientesSQLOra clienteAdm = new MantenimientoClientesAdm();
                 clienteAdm.deleteClientes(addClientes1);
 
                 ArrayList<Clientes> listaClientes = clienteAdm.listarClientes();
@@ -604,14 +580,13 @@ DefaultTableModel modelo2 = new DefaultTableModel(null, new String[]{
 
                 for (int i = 0; i < listaClientes.size(); i++) {
                     modelo2.addRow(new Object[]{
-                         listaClientes.get(i).getCod_cliente(),
-                    listaClientes.get(i).getNombre(),
-                    listaClientes.get(i).getApellido(),
-                    listaClientes.get(i).getDni(),
-                    listaClientes.get(i).getDireccion(),
-                    listaClientes.get(i).getDistrito(),
-                    listaClientes.get(i).getTelefono(),
-                    });
+                        listaClientes.get(i).getCod_cliente(),
+                        listaClientes.get(i).getNombre(),
+                        listaClientes.get(i).getApellido(),
+                        listaClientes.get(i).getDni(),
+                        listaClientes.get(i).getDireccion(),
+                        listaClientes.get(i).getDistrito(),
+                        listaClientes.get(i).getTelefono(),});
 
                 }
 

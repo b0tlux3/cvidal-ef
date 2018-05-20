@@ -1,8 +1,7 @@
-
 package ef.modelo;
 
 public class Revisiones {
-    
+
     String nro_revision, cambio_aceite, cambio_filtro, revision_frenos, otros, nro_placa;
 
     public String getNro_revision() {
@@ -52,7 +51,5 @@ public class Revisiones {
     public void setNro_placa(String nro_placa) {
         this.nro_placa = nro_placa;
     }
-    
-    
-    
+
 }

@@ -1,9 +1,16 @@
-
 package ef.modelo;
 
 public class AutosVendidos {
-    
-    String nro_placa, marca, modelo, color, precio, cod_cliente;
+
+    String codigo_venta, nro_placa, marca, modelo, color, precio, cod_cliente;
+
+    public String getCodigo_venta() {
+        return codigo_venta;
+    }
+
+    public void setCodigo_venta(String codigo_venta) {
+        this.codigo_venta = codigo_venta;
+    }
 
     public String getNro_placa() {
         return nro_placa;
@@ -52,9 +59,5 @@ public class AutosVendidos {
     public void setCod_cliente(String cod_cliente) {
         this.cod_cliente = cod_cliente;
     }
-    
-    
-    
-    
-    
+
 }

@@ -1,7 +1,7 @@
-
 package ef.modelo;
 
 public class Clientes {
+
     String cod_cliente, nombre, apellido, dni, direccion, distrito, telefono;
 
     public String getCod_cliente() {
@@ -59,8 +59,5 @@ public class Clientes {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
-    
-    
-    
+
 }
