@@ -49,28 +49,28 @@ public class jFormAdmAutoVendido extends javax.swing.JFrame {
 
         return estado_txts;
     }
-    
+
     public jFormAdmAutoVendido() {
         initComponents();
-        
+
         IMantenimientoAutosVendidosSQLOra autoVenAdm = new MantenimientoAutosVendidosAdm();
         ArrayList<AutosVendidos> listaAutosVendidos = autoVenAdm.listarAutosVendidos();
 
         jTable3.putClientProperty("Terminate edit", Boolean.TRUE);
         for (int i = 0; i < listaAutosVendidos.size(); i++) {
             modelo2.addRow(new Object[]{
-                 listaAutosVendidos.get(i).getNro_placa(),
-                    listaAutosVendidos.get(i).getModelo(),
-                    listaAutosVendidos.get(i).getMarca(),
-                    listaAutosVendidos.get(i).getColor(),
-                    listaAutosVendidos.get(i).getPrecio(),
-                    listaAutosVendidos.get(i).getCod_cliente(),
-            });
+                listaAutosVendidos.get(i).getNro_placa(),
+                listaAutosVendidos.get(i).getModelo(),
+                listaAutosVendidos.get(i).getMarca(),
+                listaAutosVendidos.get(i).getColor(),
+                listaAutosVendidos.get(i).getPrecio(),
+                listaAutosVendidos.get(i).getCod_cliente(),});
 
         }
 
         btnEditar.setEnabled(false);
-        txtAreaLogs.setText("Bienvenido: \nAgregue nuevas Autos Vendidos o seleccione uno de la tabla...");
+        txtAreaLogs.setText("Bienvenido: \nAgregue nuevas Autos Vendidos o seleccione uno de la tabla...\n"
+                + "En el campo cliente agregar el codigo que corresponde (Ej: C1001)");
         ListSelectionModel model = jTable3.getSelectionModel();
         model.addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -106,7 +106,7 @@ public class jFormAdmAutoVendido extends javax.swing.JFrame {
 
             }
         });
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -443,14 +443,14 @@ public class jFormAdmAutoVendido extends javax.swing.JFrame {
                     listaAutosVendidos.get(i).getMarca(),
                     listaAutosVendidos.get(i).getColor(),
                     listaAutosVendidos.get(i).getPrecio(),
-                    listaAutosVendidos.get(i).getCod_cliente(),
-                });
+                    listaAutosVendidos.get(i).getCod_cliente(),});
 
             }
 
             ListSelectionModel model = jTable3.getSelectionModel();
             funcEstado_txts(true);
-            txtAreaLogs.setText("Bienvenido: \nAgregue nuevas Autos vendidos o seleccione uno de la tabla...");
+            txtAreaLogs.setText("Bienvenido: \nAgregue nuevas Autos Vendidos o seleccione uno de la tabla...\n"
+                    + "En el campo cliente agregar el codigo que corresponde (Ej: C1001)");
             JOptionPane.showMessageDialog(null, "Clientes registrado con exito!");
 
         } else {
@@ -484,7 +484,7 @@ public class jFormAdmAutoVendido extends javax.swing.JFrame {
             String precioAutoVen = txtPrecioAutoVen.getText();
             String clienteAutoVen = txtClienteAutoVen.getText();
 
-             AutosVendidos addAutosVendidos1 = new AutosVendidos();
+            AutosVendidos addAutosVendidos1 = new AutosVendidos();
             addAutosVendidos1.setNro_placa(nroPlacaAutoVen);
             addAutosVendidos1.setMarca(marcaAutoVen);
             addAutosVendidos1.setModelo(modeloAutoVen);
@@ -492,7 +492,7 @@ public class jFormAdmAutoVendido extends javax.swing.JFrame {
             addAutosVendidos1.setPrecio(precioAutoVen);
             addAutosVendidos1.setCod_cliente(clienteAutoVen);
 
-          IMantenimientoAutosVendidosSQLOra autoVenAdm = new MantenimientoAutosVendidosAdm();
+            IMantenimientoAutosVendidosSQLOra autoVenAdm = new MantenimientoAutosVendidosAdm();
 
             autoVenAdm.updateAutosVendidos(addAutosVendidos1);
 
@@ -502,14 +502,12 @@ public class jFormAdmAutoVendido extends javax.swing.JFrame {
 
             for (int i = 0; i < listaAutosVendidos.size(); i++) {
                 modelo2.addRow(new Object[]{
-                   listaAutosVendidos.get(i).getNro_placa(),
+                    listaAutosVendidos.get(i).getNro_placa(),
                     listaAutosVendidos.get(i).getModelo(),
                     listaAutosVendidos.get(i).getMarca(),
                     listaAutosVendidos.get(i).getColor(),
                     listaAutosVendidos.get(i).getPrecio(),
-                    listaAutosVendidos.get(i).getCod_cliente(),
-
-                });
+                    listaAutosVendidos.get(i).getCod_cliente(),});
 
             }
 
@@ -524,7 +522,8 @@ public class jFormAdmAutoVendido extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El registro se ha actualizado con exito");
             btnRegistrar.setEnabled(true);
             funcEstado_txts(true);
-            txtAreaLogs.setText("Bienvenido: \nAgregue nuevas Autos vendidos o seleccione uno de la tabla...");
+            txtAreaLogs.setText("Bienvenido: \nAgregue nuevas Autos Vendidos o seleccione uno de la tabla...\n"
+                    + "En el campo cliente agregar el codigo que corresponde (Ej: C1001)");
 
         }
     }//GEN-LAST:event_btnEditarActionPerformed
@@ -535,17 +534,17 @@ public class jFormAdmAutoVendido extends javax.swing.JFrame {
         if (estado_txtFields == false) {
 
             int response = JOptionPane.showConfirmDialog(null, "Realmente desea eliminar el registro: " + txtNroPlaca.getText(), "Eliminar Registro",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (response == JOptionPane.NO_OPTION) {
                 System.out.println("Regreso");
                 txtAreaLogs.setText("Bienvenido: \nSe va a eliminar el registro...");
             } else if (response == JOptionPane.YES_OPTION) {
                 System.out.println("Registro eliminado...");
                 String nroPlacaAutoVen = txtNroPlaca.getText();
-               AutosVendidos addAutosVendidos1 = new AutosVendidos();
+                AutosVendidos addAutosVendidos1 = new AutosVendidos();
                 addAutosVendidos1.setNro_placa(nroPlacaAutoVen);
 
-              IMantenimientoAutosVendidosSQLOra autoVenAdm = new MantenimientoAutosVendidosAdm();
+                IMantenimientoAutosVendidosSQLOra autoVenAdm = new MantenimientoAutosVendidosAdm();
                 autoVenAdm.deleteAutosVendidos(addAutosVendidos1);
 
                 ArrayList<AutosVendidos> listaAutosVendidos = autoVenAdm.listarAutosVendidos();
@@ -554,13 +553,12 @@ public class jFormAdmAutoVendido extends javax.swing.JFrame {
 
                 for (int i = 0; i < listaAutosVendidos.size(); i++) {
                     modelo2.addRow(new Object[]{
-                       listaAutosVendidos.get(i).getNro_placa(),
-                    listaAutosVendidos.get(i).getModelo(),
-                    listaAutosVendidos.get(i).getMarca(),
-                    listaAutosVendidos.get(i).getColor(),
-                    listaAutosVendidos.get(i).getPrecio(),
-                    listaAutosVendidos.get(i).getCod_cliente(),
-                    });
+                        listaAutosVendidos.get(i).getNro_placa(),
+                        listaAutosVendidos.get(i).getModelo(),
+                        listaAutosVendidos.get(i).getMarca(),
+                        listaAutosVendidos.get(i).getColor(),
+                        listaAutosVendidos.get(i).getPrecio(),
+                        listaAutosVendidos.get(i).getCod_cliente(),});
 
                 }
 
@@ -568,7 +566,8 @@ public class jFormAdmAutoVendido extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "El registro se ha eliminado con exito");
                 funcEstado_txts(true);
                 btnRegistrar.setEnabled(true);
-                txtAreaLogs.setText("Bienvenido: \nAgregue nuevas Autos vendidos o seleccione uno de la tabla...");
+                txtAreaLogs.setText("Bienvenido: \nAgregue nuevas Autos Vendidos o seleccione uno de la tabla...\n"
+                        + "En el campo cliente agregar el codigo que corresponde (Ej: C1001)");
 
             } else if (response == JOptionPane.CLOSED_OPTION) {
                 System.out.println("Ha cerrado boton");
@@ -586,14 +585,15 @@ public class jFormAdmAutoVendido extends javax.swing.JFrame {
         funcEstado_txts(true);
         btnEditar.setEnabled(false);
         btnRegistrar.setEnabled(true);
-        txtAreaLogs.setText("Bienvenido: \nAgregue nuevas Autos vendidos o seleccione uno de la tabla...");
+        txtAreaLogs.setText("Bienvenido: \nAgregue nuevas Autos Vendidos o seleccione uno de la tabla...\n"
+                + "En el campo cliente agregar el codigo que corresponde (Ej: C1001)");
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         JDialog.setDefaultLookAndFeelDecorated(true);
         int response = JOptionPane.showConfirmDialog(null, "Realmente salir?", "Confirmar",
-            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.NO_OPTION) {
             System.out.println("Regreso");
         } else if (response == JOptionPane.YES_OPTION) {
@@ -606,9 +606,9 @@ public class jFormAdmAutoVendido extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        //menuPrincipal2 menuPrin1 = new menuPrincipal2();
-        //  dispose();
-        //  menuPrin1.setVisible(true);
+        jFormMenuPrincipal menuPrin1 = new jFormMenuPrincipal();
+        dispose();
+        menuPrin1.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

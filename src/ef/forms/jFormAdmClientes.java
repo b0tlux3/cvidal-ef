@@ -439,9 +439,9 @@ DefaultTableModel modelo2 = new DefaultTableModel(null, new String[]{
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        //menuPrincipal2 menuPrin1 = new menuPrincipal2();
-      //  dispose();
-      //  menuPrin1.setVisible(true);
+      jFormMenuPrincipal menuPrin1 = new jFormMenuPrincipal();
+          dispose();
+          menuPrin1.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed

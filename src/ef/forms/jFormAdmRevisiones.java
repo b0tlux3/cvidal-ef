@@ -70,7 +70,8 @@ public class jFormAdmRevisiones extends javax.swing.JFrame {
         }
 
         btnEditar.setEnabled(false);
-        txtAreaLogs.setText("Bienvenido: \nAgregue nuevas Revisiones o seleccione uno de la tabla...");
+        txtAreaLogs.setText("Bienvenido: \nAgregue nuevas Revisiones o seleccione uno de la tabla...\n"
+                + "En el campo Marca agregar el nro de Placa que corresponde al auto (Ej: pe0876)");
         ListSelectionModel model = jTable3.getSelectionModel();
         model.addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -455,7 +456,8 @@ public class jFormAdmRevisiones extends javax.swing.JFrame {
 
             ListSelectionModel model = jTable3.getSelectionModel();
             funcEstado_txts(true);
-            txtAreaLogs.setText("Bienvenido: \nAgregue nuevas revisiones o seleccione uno de la tabla...");
+           txtAreaLogs.setText("Bienvenido: \nAgregue nuevas Revisiones o seleccione uno de la tabla...\n"
+                + "En el campo Marca agregar el nro de Placa que corresponde al auto (Ej: pe0876)");
             JOptionPane.showMessageDialog(null, "Clientes registrado con exito!");
 
         } else {
@@ -530,7 +532,8 @@ public class jFormAdmRevisiones extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El registro se ha actualizado con exito");
             btnRegistrar.setEnabled(true);
             funcEstado_txts(true);
-            txtAreaLogs.setText("Bienvenido: \nAgregue nuevas revisiones o seleccione uno de la tabla...");
+            txtAreaLogs.setText("Bienvenido: \nAgregue nuevas Revisiones o seleccione uno de la tabla...\n"
+                + "En el campo Marca agregar el nro de Placa que corresponde al auto (Ej: pe0876)");
 
         }
     }//GEN-LAST:event_btnEditarActionPerformed
@@ -574,7 +577,8 @@ public class jFormAdmRevisiones extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "El registro se ha eliminado con exito");
                 funcEstado_txts(true);
                 btnRegistrar.setEnabled(true);
-                txtAreaLogs.setText("Bienvenido: \nAgregue nuevas revisiones o seleccione uno de la tabla...");
+               txtAreaLogs.setText("Bienvenido: \nAgregue nuevas Revisiones o seleccione uno de la tabla...\n"
+                + "En el campo Marca agregar el nro de Placa que corresponde al auto (Ej: pe0876)");
 
             } else if (response == JOptionPane.CLOSED_OPTION) {
                 System.out.println("Ha cerrado boton");
@@ -592,7 +596,8 @@ public class jFormAdmRevisiones extends javax.swing.JFrame {
         funcEstado_txts(true);
         btnEditar.setEnabled(false);
         btnRegistrar.setEnabled(true);
-        txtAreaLogs.setText("Bienvenido: \nAgregue nuevas revisioens o seleccione uno de la tabla...");
+        txtAreaLogs.setText("Bienvenido: \nAgregue nuevas Revisiones o seleccione uno de la tabla...\n"
+                + "En el campo Marca agregar el nro de Placa que corresponde al auto (Ej: pe0876)");
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -611,10 +616,9 @@ public class jFormAdmRevisiones extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        //menuPrincipal2 menuPrin1 = new menuPrincipal2();
-        //  dispose();
-        //  menuPrin1.setVisible(true);
+        jFormMenuPrincipal menuPrin1 = new jFormMenuPrincipal();
+          dispose();
+          menuPrin1.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
